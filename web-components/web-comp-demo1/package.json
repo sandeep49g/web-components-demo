@@ -1,0 +1,12 @@
+{
+  "name": "sandeep49g-web-component1-demo",
+  "version": "1.0.15",
+  "description": "Web Component Simple Demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
