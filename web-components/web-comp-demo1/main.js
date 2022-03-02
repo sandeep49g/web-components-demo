@@ -9,7 +9,7 @@ template.innerHTML = `
 		grid-template-columns: 1fr 2fr;
 		grid-gap: 10px;
 		margin-bottom: 15px;
-		border-bottom: darkorchid 5px solid;
+		border-bottom: #000 1px solid;
 	}
 
 	.user-card img {
@@ -18,11 +18,12 @@ template.innerHTML = `
 
 	.user-card button {
 		cursor: pointer;
-		background: darkorchid;
+		background: #000;
 		color: #fff;
 		border: 0;
 		border-radius: 5px;
 		padding: 5px 10px;
+    margin-bottom: 10px;
 	}
 
   h2 {
@@ -68,7 +69,7 @@ export class UserCard extends HTMLElement {
     }
 
     toggleBtn.dispatchEvent(new CustomEvent("clicked", {
-      detail: `${userCardSelector.shadowRoot.querySelector('h3').innerText} : I am clicked`
+      detail: `${this.shadowRoot.querySelector('h3').innerText} : I am clicked`
     }));
   }
 
