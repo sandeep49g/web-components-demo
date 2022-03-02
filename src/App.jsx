@@ -27,7 +27,7 @@ const App = () => {
         <div slot="phone">333-333-3333</div>
       </user-card>
 
-      <button onClick={() => { setUser1('sandeep');}}>Hello</button>
+      <button onClick={() => { setUser1('sandeep');}}>Update Name</button>
     </>
   );
 };
