@@ -29,9 +29,9 @@
                   info.style.display = 'none';
                   toggleBtn.innerText = 'Show Info';
                 }
-                
+
                 toggleBtn.dispatchEvent(new CustomEvent("clicked", {
-                    detail: 'I am clicked'
+                    detail: `${userCardSelector.shadowRoot.querySelector('h3').innerText} : I am clicked`
                 }));
               }
 
