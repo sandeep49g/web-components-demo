@@ -53,24 +53,24 @@ export class UserCard extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  // toggleInfo() {
-  //   this.showInfo = !this.showInfo;
+  toggleInfo() {
+    this.showInfo = !this.showInfo;
 
-  //   const info = this.shadowRoot.querySelector('.info');
-  //   const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
+    const info = this.shadowRoot.querySelector('.info');
+    const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
 
-  //   if(this.showInfo) {
-  //     info.style.display = 'block';
-  //     toggleBtn.innerText = 'Hide Info';
-  //   } else {
-  //     info.style.display = 'none';
-  //     toggleBtn.innerText = 'Show Info';
-  //   }
+    if(this.showInfo) {
+      info.style.display = 'block';
+      toggleBtn.innerText = 'Hide Info';
+    } else {
+      info.style.display = 'none';
+      toggleBtn.innerText = 'Show Info';
+    }
 
-  //   toggleBtn.dispatchEvent(new CustomEvent("clicked", {
-  //     detail: 'I am clicked'
-  //   }));
-  // }
+    toggleBtn.dispatchEvent(new CustomEvent("clicked", {
+      detail: `${userCardSelector.shadowRoot.querySelector('h3').innerText} : I am clicked`
+    }));
+  }
 
   static get observedAttributes() {
     return ['name'];
@@ -82,16 +82,17 @@ export class UserCard extends HTMLElement {
     this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
     this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
 
-    // this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
-    // this.shadowRoot.querySelector('#toggle-info').addEventListener('clicked', (evt) => {
-    //   console.log(evt.detail);
-    // });
+    this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
+    this.shadowRoot.querySelector('#toggle-info').addEventListener('clicked', (evt) => {
+      console.log(evt.detail);
+    });
   }
 
   disconnectedCallback() {
     console.log('unmounted');
 
-    // this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+    this.shadowRoot.querySelector('#toggle-info').removeEventListener('click', null);
+    this.shadowRoot.querySelector('#toggle-info').removeEventListener('clicked', null);
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
