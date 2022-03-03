@@ -1,57 +1,16 @@
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-  .user-card {
-		font-family: 'Arial', sans-serif;
-		background: #f4f4f4;
-		width: 500px;
-		display: grid;
-		grid-template-columns: 1fr 2fr;
-		grid-gap: 10px;
-		margin-bottom: 15px;
-		border-bottom: #000 1px solid;
-	}
-
-	.user-card img {
-		width: 100%;
-	}
-
-	.user-card button {
-		cursor: pointer;
-		background: #000;
-		color: #fff;
-		border: 0;
-		border-radius: 5px;
-		padding: 5px 10px;
-    margin-bottom: 10px;
-	}
-
-  h2 {
-    color: var(--brownColor);
-  }
-  </style>
-  <div class="user-card">
-    <img />
-    <div>
-      <h2>I am Web Component NEW</h2>
-      <h3></h3>
-      <div class="info">
-        <p><slot name="email" /></p>
-        <p><slot name="phone" /></p>
-      </div>
-      <button id="toggle-info">Hide Info</button>
-    </div>
-  </div>
-`;
+import { templates } from './templates';
 
 export class UserCard extends HTMLElement {
+  // username = '';
+  // avatar = '';
   constructor() {
     super();
 
     this.showInfo = true;
 
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.appendChild(templates.userCardTemplate.content.cloneNode(true));
+    this.render();
   }
 
   toggleInfo() {
@@ -74,14 +33,21 @@ export class UserCard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['name'];
+    return ['username', 'avatar'];
+  }
+
+  set data(data) {
+    console.log('set data: ' + data.fname);
+    console.log('set data: ' + data.lname);
+    this.h3Element.textContent = data.username;
   }
 
   connectedCallback() {
     console.log('mounted');
-
-    this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
-    this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
+    // this.render();
+    
+    // this.shadowRoot.querySelector('h3').innerText = this.getAttribute('username');
+    // this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
 
     this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
     this.shadowRoot.querySelector('#toggle-info').addEventListener('clicked', (evt) => {
@@ -96,22 +62,54 @@ export class UserCard extends HTMLElement {
     this.shadowRoot.querySelector('#toggle-info').removeEventListener('clicked', null);
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
+  attributeChangedCallback(attrName, oldValue, newValue) {
     if (oldValue === newValue) {
      return;
     }
-    console.log(`The attribute ${name} has changed`);
-    this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
+    console.log(`The attribute ${attrName} has changed`);
+
+    switch(attrName) {
+      case 'username':
+        this.h3Element.textContent = newValue;
+        break;
+      case 'avatar':
+        // this.imgElement.src = newValue;
+        this.imgElement.setAttribute('src', newValue);
+        break;
+    }
+
+    // this[attrName] = newValue;
+    // this.render();
+
+    // if (attrName === 'username')
+    // this.shadowRoot.querySelector('h3').innerText = this.username;
+
+    // this.shadowRoot.querySelector('h3').innerText = this.getAttribute('username');
     // this.shadowRoot.querySelector('h3').innerText = newValue;
+    // console.log(this.hasAttribute('username'));
+  }
+
+  // only for iFrames
+  adoptedCallback() {
+    console.log('Adopted');
+  }
+
+  // get template() {
+  //   return `
+  //     <style></style>
+  //     <div class="user-card"></div>
+  //   `;
+  // }
+
+  render() {
+    // this.shadowRoot.innerHTML = this.template;
+
+    // this.shadowRoot.appendChild(templates.userCardTemplate.content);
+
+    // const templateElement = document.getElementById('user-card-template');
+    // this.shadowRoot.appendChild(templateElement.content);
+
+    this.h3Element = this.shadowRoot.querySelector('h3');
+    this.imgElement = this.shadowRoot.querySelector('img');
   }
 }
-
-{
-  const rootSelector = document.querySelector(':root');
-  const rootSelectorVars = getComputedStyle(rootSelector);
-  console.log(rootSelectorVars.getPropertyValue('--brownColor'));
-
-  // rootSelector.style.setProperty('--brownColor', 'orange');  
- 
-}
-
