@@ -9,10 +9,6 @@ h2 {
     // }
 }
 
-.slot-email {
-    color: green;
-}
-
 user-card {    // Overriding custom property from outside of web component
     --brownColor: brown;
 }
@@ -30,4 +26,8 @@ user-card::part(some-box2) {
 // usercard::shadow .user-card img {    // Doesn't work
 //     width: 10%;
 // }
+
+.slot-email {
+    color: magenta;
+}
 

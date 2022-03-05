@@ -1,6 +1,6 @@
 {
   "name": "sandeep49g-web-component1-demo",
-  "version": "1.0.45",
+  "version": "1.0.50",
   "description": "My webpack project",
   "main": "src/index.js",
   "scripts": {

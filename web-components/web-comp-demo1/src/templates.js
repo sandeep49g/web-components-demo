@@ -14,9 +14,17 @@ export const templates = {
                     box-sizing: border-box;
                 }
 
-                div.some-box {
+                :host div.some-box {
                     background: #ccc;
                     color: green;
+                }
+
+                ::slotted(div.slot-email) {
+                    color: green;
+                }
+
+                ::slotted(p) {
+                    color: blue;
                 }
                 
                 .user-card {
@@ -46,11 +54,7 @@ export const templates = {
                 
                 h2 {
                     color: var(--brownColor, orange)
-                }
-
-                .slot-email {
-                    color: blue;
-                }
+                }               
             </style>
             <div class="user-card">
                 <img />
@@ -60,8 +64,14 @@ export const templates = {
                     <div part="some-box2" class="some-box2"><span>I am shared part 2 which injectable from outside without css variable</span></div>
                     <h3></h3>
                     <div class="info">
-                        <slot name="email" class="slot-email">Default Email</slot>
-                        <p><slot name="phone" /></p>
+                        <slot name="email" class="slot-email">
+                            <p>Default Email</p>
+                        </slot>
+                        <p>
+                            <slot name="phone">
+                                Default Phone
+                            </slot>
+                        </p>
                     </div>
                     <button id="toggle-info">Hide Info</button>
                 </div>

@@ -49,7 +49,7 @@ const App = () => {
         <div className='slot-email' id="slot-email" slot="email">
             johndoe@gmail.com
         </div>
-        <div slot="phone">555-555-5555</div>
+        <p slot="phone">555-555-5555</p>
       </user-card>
 
       <user-card
@@ -57,7 +57,7 @@ const App = () => {
         avatar={"https://randomuser.me/api/portraits/women/8.jpg"}
       >
         <div className='slot-email' id="slot-email" slot="email">janedoe@gmail.com</div>
-        <div slot="phone">333-333-3333</div>
+        <p slot="phone">333-333-3333</p>
       </user-card>
 
       <button onClick={() => { setUser1('sandeep');}}>Update Name 1</button>
