@@ -1,7 +1,7 @@
 import './App.scss';
 import React, { useState, useEffect } from "react";
 
-// import 'sandeep49g-web-component1-demo/dist/main';
+// import 'sandeep49g-web-component1-demo/dist';
 import "../web-components/web-comp-demo1/src/index";
 import "./web-comp-demo1-interaction";
 
