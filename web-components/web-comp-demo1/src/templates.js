@@ -15,7 +15,7 @@ export const templates = {
                 }
 
                 div.some-box {
-                    background: #000;
+                    background: #ccc;
                     color: green;
                 }
                 
@@ -60,7 +60,7 @@ export const templates = {
                     <div part="some-box2" class="some-box2"><span>I am shared part 2 which injectable from outside without css variable</span></div>
                     <h3></h3>
                     <div class="info">
-                        <slot name="email" class="slot-email"></slot>
+                        <slot name="email" class="slot-email">Default Email</slot>
                         <p><slot name="phone" /></p>
                     </div>
                     <button id="toggle-info">Hide Info</button>

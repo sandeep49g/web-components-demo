@@ -41,5 +41,7 @@ function domManipulation() {
         //     // }
         // });
         
+        // console.log('hello: ' + document.querySelector('.slot-email').innerHTML); // Will work if slot template is coming from outside
+        // console.log('hello: ' + userCardSelectorAll[0].shadowRoot.querySelector('.slot-email').innerHTML); // Will work if there is default slot template which will be in shadow root
     });
 }

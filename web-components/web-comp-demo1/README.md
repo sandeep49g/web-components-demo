@@ -23,14 +23,14 @@ Pros:
 Cons:
     Lot of CSS properties need to provide individually, can be time consuming
 
-2. ::part('some-box')   // some-box is part name in template of web component
+2. ::part(some-box)   // some-box is part name in template of web component
 For Ex: In user-card web component: <div part="some-box" class="default-css">some box</div>
-        In consumer CSS: user-card::part('some-box') {...}
+        In consumer CSS: user-card::part(some-box) {...}
 Pros:
     We can have default css properties for whole group
     We can have lot of CSS properties together in single group, much better than first approach (CSS variables)
 
-3. slot tag in web component, we can style from outside for that slot
+3. slot tag in web component, we can style from outside for that slot (Slot is not a part of shadow root if template is coming from outside, default template of slot will bepart of shadow root)
 For Ex: In user-card web component: <slot name='email'></slot>
         In consumer: <user-card><div slot='email' class='slot-email'>abc@xyz.com<div></user-card>
         In consumer CSS: .slot-email {...}

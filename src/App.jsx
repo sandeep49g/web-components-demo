@@ -42,6 +42,7 @@ const App = () => {
     <>
       <h2>Hello world</h2>
       <user-card
+        class="partStyled"
         // username={user1}
         avatar={"https://randomuser.me/api/portraits/men/9.jpg"}
       >

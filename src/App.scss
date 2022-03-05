@@ -17,7 +17,7 @@ user-card {    // Overriding custom property from outside of web component
     --brownColor: brown;
 }
 
-user-card::part(some-box) {
+user-card.partStyled::part(some-box) {
     background: orange;
     color: blueviolet;
 }
