@@ -2,10 +2,32 @@ h2 {
     color: green;
 }
 :root {
-    --brownColor: brown;
     --blackColor: #000;
+    // --typography: {  // Doesn't work with apply
+    //     font-size: 50px;
+    //     background: blueviolet;
+    // }
 }
 
 .slot-email {
-    color: maroon;
+    color: green;
 }
+
+user-card {    // Overriding custom property from outside of web component
+    --brownColor: brown;
+}
+
+user-card::part(some-box) {
+    background: orange;
+    color: blueviolet;
+}
+
+user-card::part(some-box2) {
+    background: #000;
+    color: #fff;
+}
+
+// usercard::shadow .user-card img {    // Doesn't work
+//     width: 10%;
+// }
+

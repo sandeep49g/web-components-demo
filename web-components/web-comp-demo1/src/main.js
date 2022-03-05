@@ -9,7 +9,9 @@ export class UserCard extends HTMLElement {
     this.showInfo = true;
 
     this.attachShadow({ mode: 'open' });
+    // this.shadowRoot.appendChild(templates.userCardTemplate.content);
     this.shadowRoot.appendChild(templates.userCardTemplate.content.cloneNode(true));
+    // this.shadowRoot.appendChild(document.importNode(templates.userCardTemplate.content, true));
     this.render();
   }
 
